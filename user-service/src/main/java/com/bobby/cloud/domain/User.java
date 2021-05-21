@@ -1,4 +1,4 @@
-package com.bobby.cloud.userservice.domain;
+package com.bobby.cloud.domain;
 
 import lombok.Data;
 

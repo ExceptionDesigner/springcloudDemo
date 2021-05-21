@@ -1,7 +1,7 @@
-package com.bobby.cloud.userservice.service.impl;
+package com.bobby.cloud.service.impl;
 
-import com.bobby.cloud.userservice.domain.User;
-import com.bobby.cloud.userservice.service.UserService;
+import com.bobby.cloud.domain.User;
+import com.bobby.cloud.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 

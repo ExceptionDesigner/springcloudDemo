@@ -1,4 +1,4 @@
-package com.bobby.cloud.userservice;
+package com.bobby.cloud;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

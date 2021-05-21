@@ -1,8 +1,8 @@
-package com.bobby.cloud.userservice.controller;
+package com.bobby.cloud.controller;
 
-import com.bobby.cloud.userservice.domain.CommonResult;
-import com.bobby.cloud.userservice.domain.User;
-import com.bobby.cloud.userservice.service.UserService;
+import com.bobby.cloud.domain.CommonResult;
+import com.bobby.cloud.domain.User;
+import com.bobby.cloud.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

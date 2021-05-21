@@ -23,7 +23,7 @@ public class UserRibbonController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${service-url.user-service}")
+    @Value("${com.bobby.hystrix.service-url.user-com.bobby.hystrix.service}")
     private String userServiceUrl;
 
     @GetMapping("/{id}")

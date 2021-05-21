@@ -1,6 +1,6 @@
-package com.bobby.cloud.userservice.service;
+package com.bobby.cloud.service;
 
-import com.bobby.cloud.userservice.domain.User;
+import com.bobby.cloud.domain.User;
 
 import java.util.List;
 

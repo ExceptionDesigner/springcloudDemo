@@ -1,19 +1,15 @@
-package com.bobby.cloud.userservice.domain;
-
-import lombok.Data;
+package com.bobby.hystrix.domain;
 
 /**
  * @author: Bobby
- * @create: 2020-04-24 16:47
- * @description: 定义返回对象
+ * @create: 2021-05-20 17:29
+ * @description: 返回结果
  **/
-@Data
 public class CommonResult<T> {
 
     private T data;
     private String message;
     private Integer code;
-
 
     public CommonResult() {
     }
@@ -32,4 +28,27 @@ public class CommonResult<T> {
         this(data, "操作成功", 200);
     }
 
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
 }
