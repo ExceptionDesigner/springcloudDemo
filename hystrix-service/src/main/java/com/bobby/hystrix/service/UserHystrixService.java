@@ -1,6 +1,10 @@
 package com.bobby.hystrix.service;
 
 import com.bobby.hystrix.domain.CommonResult;
+import com.bobby.hystrix.domain.User;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.concurrent.Future;
 
 /**
  * @author: Bobby
@@ -8,5 +12,14 @@ import com.bobby.hystrix.domain.CommonResult;
  * @description:
  **/
 public interface UserHystrixService {
-    CommonResult getUser(Long id);
+    CommonResult getUser( Long id);
+
+    CommonResult getUserCommand( Long id);
+
+    CommonResult getUserException(Long id);
+
+    CommonResult getUserCache(Long id);
+
+    CommonResult removeCache(Long id);
+
 }
