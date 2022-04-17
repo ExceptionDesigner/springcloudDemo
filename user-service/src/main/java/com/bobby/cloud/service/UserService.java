@@ -1,5 +1,6 @@
 package com.bobby.cloud.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.bobby.cloud.domain.User;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * @create: 2020-04-24 17:58
  * @description:
  **/
-public interface UserService {
+public interface UserService extends IService<User> {
     void create(User user);
 
     User getUser(Long id);

@@ -1,8 +1,13 @@
 package com.bobby.cloud.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.bobby.cloud.domain.User;
+import com.bobby.cloud.mapper.UserMapper;
 import com.bobby.cloud.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.PostConstruct;
@@ -16,58 +21,55 @@ import java.util.stream.Collectors;
  * @description:
  **/
 @Service
-public class UserServiceImpl implements UserService {
-    private List<User> userList;
+@Transactional(rollbackFor = Exception.class)
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+
+    @Autowired
+    private UserMapper userMapper;
+
 
     @Override
     public void create(User user) {
-        userList.add(user);
+        userMapper.insert(user);
     }
 
     @Override
     public User getUser(Long id) {
-        List<User> findUserList = userList.stream().filter(userItem -> userItem.getId().equals(id)).collect(Collectors.toList());
+       /* List<User> findUserList = userList.stream().filter(userItem -> userItem.getId().equals(id)).collect(Collectors.toList());
         if (!CollectionUtils.isEmpty(findUserList)) {
             return findUserList.get(0);
         }
-        return null;
+        return null;*/
+        return userMapper.selectById(id);
     }
 
     @Override
     public void update(User user) {
-        userList.stream().filter(userItem -> userItem.getId().equals(user.getId())).forEach(userItem -> {
+       /* userList.stream().filter(userItem -> userItem.getId().equals(user.getId())).forEach(userItem -> {
             userItem.setUsername(user.getUsername());
             userItem.setPassword(user.getPassword());
-        });
+        });*/
+         userMapper.updateById(user);
     }
 
     @Override
     public void delete(Long id) {
-        User user = getUser(id);
-        if (user != null) {
-            userList.remove(user);
-        }
+        User user = userMapper.selectById(id);
+        user.setIsDeleted("1");
+        this.updateById(user);
     }
 
     @Override
     public User getByUsername(String username) {
-        List<User> findUserList = userList.stream().filter(userItem -> userItem.getUsername().equals(username)).collect(Collectors.toList());
-        if (!CollectionUtils.isEmpty(findUserList)) {
-            return findUserList.get(0);
-        }
-        return null;
+        QueryWrapper<User> qr = new QueryWrapper();
+        qr.like("username",username);
+        return userMapper.selectOne(qr);
     }
 
     @Override
     public List<User> getUserByIds(List<Long> ids) {
-        return userList.stream().filter(userItem -> ids.contains(userItem.getId())).collect(Collectors.toList());
+        return userMapper.selectBatchIds(ids);
     }
 
-    @PostConstruct
-    public void initData() {
-        userList = new ArrayList<>();
-        userList.add(new User(1L, "bobby", "123456"));
-        userList.add(new User(2L, "bob", "123456"));
-        userList.add(new User(3L, "yunyun", "123456"));
-    }
+
 }

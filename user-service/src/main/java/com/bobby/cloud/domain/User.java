@@ -1,6 +1,12 @@
 package com.bobby.cloud.domain;
 
-import lombok.Data;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.*;
+import lombok.experimental.Accessors;
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Column;
+import java.io.Serializable;
 
 /**
  * @author: Bobby
@@ -8,19 +14,37 @@ import lombok.Data;
  * @description: 用户实体
  **/
 @Data
-public class User {
+@Accessors(chain = true)
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@TableName("t_address")
+public class User implements Serializable {
 
+    private static final long serialVersionUID = -6021410187541951459L;
+
+    @Id
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "sex")
+    private String sex;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "password")
     private String password;
 
-    public User() {
-    }
+    /**
+     * 删除标签
+     */
+    @Column(name = "is_deleted")
+    private String isDeleted;
 
-    public User(Long id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
+
 
 }

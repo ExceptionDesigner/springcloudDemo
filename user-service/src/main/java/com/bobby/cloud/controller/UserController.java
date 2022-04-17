@@ -1,6 +1,6 @@
 package com.bobby.cloud.controller;
 
-import com.bobby.cloud.domain.CommonResult;
+import com.bobby.cloud.domain.response.CommonResult;
 import com.bobby.cloud.domain.User;
 import com.bobby.cloud.service.UserService;
 import org.slf4j.Logger;

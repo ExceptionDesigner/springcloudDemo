@@ -96,7 +96,7 @@ public class UserHystrixServiceImpl implements UserHystrixService {
         return restTemplate.getForObject(userServiceUrl + "/user/{1}", CommonResult.class, id);
     }
 
-
+ 
     /**
      * 为缓存生成key的方法
      */

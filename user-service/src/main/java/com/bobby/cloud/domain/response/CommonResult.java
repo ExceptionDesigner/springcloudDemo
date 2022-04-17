@@ -1,4 +1,4 @@
-package com.bobby.cloud.domain;
+package com.bobby.cloud.domain.response;
 
 import lombok.Data;
 
