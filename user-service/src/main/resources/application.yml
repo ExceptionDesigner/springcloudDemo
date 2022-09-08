@@ -16,7 +16,7 @@ spring:
       restart:
         enabled: true     # 开启热更新
 
-#eurka配置
+##eurka配置
 #eureka:
 #  client:
 #    register-with-eureka: true
@@ -24,12 +24,11 @@ spring:
 #    service-url:
 #      defaultZone: http://localhost:8001/eureka/
 
-
 mybatis-plus:
-  mapper-locations: classpath:/mapping/*.xml
-  configuration:
-    map-underscore-to-camel-case: true
-    auto-mapping-behavior: full
+  config-location: classpath:/mybatis-config.xml
+  mapper-locations: classpath:/mapper/*.xml
 
-
+logging:
+  level:
+    com.bobby.cloud.mapper: DEBUG
 

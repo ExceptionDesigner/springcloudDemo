@@ -60,6 +60,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
+    public List<User> getUserList() {
+        return userMapper.getUserList();
+    }
+
+    @Override
     public User getByUsername(String username) {
         QueryWrapper<User> qr = new QueryWrapper();
         qr.like("username",username);
@@ -70,6 +75,5 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public List<User> getUserByIds(List<Long> ids) {
         return userMapper.selectBatchIds(ids);
     }
-
 
 }

@@ -1,12 +1,16 @@
 package com.bobby.cloud.domain;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Column;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author: Bobby
@@ -44,6 +48,9 @@ public class User implements Serializable {
      */
     @Column(name = "is_deleted")
     private String isDeleted;
+
+    @Column(name = "birthday")
+    private Date birthday;
 
 
 

@@ -61,4 +61,11 @@ public class UserController {
         return new CommonResult("操作成功", 200);
     }
 
+    @RequestMapping("/getUserList")
+    public CommonResult getUserList() {
+        List<User> userList = userService.getUserList();
+        return new CommonResult<>(userList);
+    }
+
 }
+

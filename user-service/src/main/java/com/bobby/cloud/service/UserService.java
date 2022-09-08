@@ -22,4 +22,6 @@ public interface UserService extends IService<User> {
     void update(User user);
 
     void delete(Long id);
+
+    List<User> getUserList();
 }

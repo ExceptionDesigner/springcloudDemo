@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.bobby.cloud.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * @author: Bobby
  * @create: 2022-04-17 17:26
@@ -12,7 +14,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
-
-
+    List<User> getUserList();
 
 }
+
+
