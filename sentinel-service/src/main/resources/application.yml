@@ -1,0 +1,50 @@
+server:
+  port: 8401
+
+spring:
+  application:
+    name: sentinel-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
+    sentinel:
+      transport:
+        dashboard: localhost:8080 #配置sentinel dashboard地址
+        port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-sentinel
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver     # 数据库驱动
+      url: jdbc:mysql://127.0.0.1/mybatis?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useUnicode=true&useSSL=false     # 数据库链接
+      username: root     # 数据库账号
+      password: 123456     # 数据库密码
+    devtools:
+      restart:
+        enabled: true     # 开启热更新
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+
+
+logging:
+  level:
+    com.bobby.cloud.mapper: DEBUG
+
+feign:
+  sentinel:
+    enabled: true #打开sentinel对feign的支持
+service-url:
+  user-service: http://nacos-user-service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
