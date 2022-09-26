@@ -12,7 +12,7 @@ spring:
       transport:
         dashboard: localhost:8080 #配置sentinel dashboard地址
         port: 8719
-      datasource:
+      datasource: #Sentinel控制台也从Nacos配置中心去获取配置信息
         ds1:
           nacos:
             server-addr: localhost:8848

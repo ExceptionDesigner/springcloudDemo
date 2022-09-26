@@ -53,5 +53,11 @@ public class User implements Serializable {
     private Date birthday;
 
 
+    public User(Long id,String username,String password){
+        this();
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
 
 }
